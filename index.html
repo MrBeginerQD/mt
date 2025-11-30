@@ -3,66 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>پروکسی تلگرام | TG Proxy</title>
-    <meta name="description" content="لیست پروکسی‌های پرسرعت MTProto تلگرام">
-    <meta name="theme-color" content="#2AABEE">
+    <title>پروکسی تلگرام</title>
+    <meta name="theme-color" content="#1a1c29">
     
-    <!-- PWA Settings -->
+    <!-- PWA -->
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="logo.png">
     
-    <!-- Styles -->
+    <!-- Fonts & Icons -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <header>
-        <div class="header-content">
-            <div class="logo-area">
-                <!-- لوگوی خود را با نام logo.png در کنار فایل‌ها قرار دهید -->
-                <img src="logo.png" alt="Logo" class="app-logo" onerror="this.style.display='none'">
-                <div>
-                    <h1>پروکسی‌های فعال</h1>
-                    <span id="status-text" class="status">در حال دریافت...</span>
+    <!-- پس‌زمینه متحرک -->
+    <div class="bg-gradient"></div>
+
+    <div class="app-container">
+        <header class="glass-panel">
+            <div class="top-row">
+                <div class="brand">
+                    <div class="logo-placeholder">
+                        <img src="logo.png" alt="Logo" onerror="this.style.display='none'">
+                        <i class="fas fa-shield-alt fallback-icon"></i>
+                    </div>
+                    <div>
+                        <h1 id="site-title">پروکسی‌گرام</h1>
+                        <div class="status-badge">
+                            <span class="status-dot"></span>
+                            <span id="status-text">آماده‌سازی...</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="glass-btn icon-only"><i class="fas fa-moon"></i></button>
+            </div>
+
+            <div class="stats-row">
+                <div class="stat-box">
+                    <span class="stat-label">تعداد فعال</span>
+                    <span class="stat-value" id="total-proxies">---</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">میانگین پینگ</span>
+                    <span class="stat-value text-green" id="avg-ping">---</span>
                 </div>
             </div>
-            <button id="theme-toggle" class="icon-btn"><i class="fas fa-moon"></i></button>
-        </div>
-        
-        <div class="stats-bar">
-            <div class="stat-item">
-                <i class="fas fa-server"></i>
-                <span id="total-proxies">0</span> پروکسی
+
+            <div class="actions-row">
+                <a href="#" id="channel-link" target="_blank" class="glass-btn primary full-width">
+                    <i class="fab fa-telegram-plane"></i> عضویت در کانال
+                </a>
             </div>
-            <a href="https://t.me/YOUR_CHANNEL_ID" target="_blank" class="channel-btn">
-                <i class="fab fa-telegram"></i> عضویت در کانال
-            </a>
-        </div>
 
-        <div class="filter-wrapper">
-            <select id="country-filter">
-                <option value="all">همه کشورها</option>
-            </select>
-        </div>
-    </header>
+            <!-- دراپ‌داون سفارشی برای کشورها -->
+            <div class="custom-select-wrapper">
+                <div class="custom-select">
+                    <div class="custom-select-trigger">
+                        <span id="selected-country">🌍 همه کشورها</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="custom-options">
+                        <!-- گزینه‌ها با جاوااسکریپت پر می‌شوند -->
+                    </div>
+                </div>
+            </div>
+        </header>
 
-    <main id="proxy-container">
-        <!-- Proxies will be loaded here -->
-        <div class="loader"></div>
-    </main>
+        <main id="proxy-list">
+            <div class="loading-skeleton">
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+            </div>
+        </main>
+    </div>
 
-    <!-- Modal for QR Code -->
-    <div id="qr-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h3>اسکن برای اتصال</h3>
-            <img id="qr-image" src="" alt="QR Code">
-            <p>دوربین خود را باز کنید</p>
+    <!-- Modal QR -->
+    <div id="qr-modal" class="modal-overlay">
+        <div class="modal-glass">
+            <button class="close-modal">&times;</button>
+            <h3>اسکن جهت اتصال</h3>
+            <div class="qr-box">
+                <img id="qr-image" src="" alt="QR">
+            </div>
+            <p>دوربین گوشی را روی کد بگیرید</p>
         </div>
     </div>
 
+    <script src="config.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
