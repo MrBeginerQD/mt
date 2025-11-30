@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>پروکسی تلگرام | TG Proxy</title>
+    <meta name="description" content="لیست پروکسی‌های پرسرعت MTProto تلگرام">
+    <meta name="theme-color" content="#2AABEE">
+    
+    <!-- PWA Settings -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="logo.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="logo-area">
+                <!-- لوگوی خود را با نام logo.png در کنار فایل‌ها قرار دهید -->
+                <img src="logo.png" alt="Logo" class="app-logo" onerror="this.style.display='none'">
+                <div>
+                    <h1>پروکسی‌های فعال</h1>
+                    <span id="status-text" class="status">در حال دریافت...</span>
+                </div>
+            </div>
+            <button id="theme-toggle" class="icon-btn"><i class="fas fa-moon"></i></button>
+        </div>
+        
+        <div class="stats-bar">
+            <div class="stat-item">
+                <i class="fas fa-server"></i>
+                <span id="total-proxies">0</span> پروکسی
+            </div>
+            <a href="https://t.me/YOUR_CHANNEL_ID" target="_blank" class="channel-btn">
+                <i class="fab fa-telegram"></i> عضویت در کانال
+            </a>
+        </div>
+
+        <div class="filter-wrapper">
+            <select id="country-filter">
+                <option value="all">همه کشورها</option>
+            </select>
+        </div>
+    </header>
+
+    <main id="proxy-container">
+        <!-- Proxies will be loaded here -->
+        <div class="loader"></div>
+    </main>
+
+    <!-- Modal for QR Code -->
+    <div id="qr-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>اسکن برای اتصال</h3>
+            <img id="qr-image" src="" alt="QR Code">
+            <p>دوربین خود را باز کنید</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
